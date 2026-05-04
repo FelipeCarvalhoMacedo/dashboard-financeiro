@@ -40,6 +40,19 @@ html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
 }
 h1 { font-family: 'DM Serif Display', serif !important; color: #f0f2f8 !important; }
 h1 em { color: #4f8ef7 !important; font-style: italic; }
+
+[data-testid="stPlotlyChart"] {
+    background: #1a1e2a;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 16px 8px 8px 8px;
+}
+[data-testid="stDataFrame"] {
+    background: #1a1e2a;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 12px;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -115,7 +128,7 @@ fig_main.add_trace(go.Scatter(
 
 fig_main.update_layout(
     barmode='group', height=320,
-    plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='#1a1e2a',
     font=dict(color='#7a829a', family='DM Sans', size=11),
     legend=dict(orientation='h', yanchor='bottom', y=1.02, font=dict(size=11)),
     margin=dict(l=0,r=0,t=10,b=0),
@@ -138,7 +151,7 @@ with col_m:
         mode='lines+markers', marker=dict(size=6, color='#9b6dff'),
     ))
     fig_marg.update_layout(
-        height=240, plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)',
+        height=240, plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='#1a1e2a',
         font=dict(color='#7a829a', size=10), margin=dict(l=0,r=0,t=0,b=0),
         xaxis=dict(tickangle=-40, gridcolor='rgba(255,255,255,0.04)'),
         yaxis=dict(ticksuffix='%', range=[10,40], gridcolor='rgba(255,255,255,0.04)'),
@@ -160,7 +173,7 @@ with col_c:
     fig_cmp.add_trace(go.Scatter(name='Res. 2026',x=m4,y=res26,mode='lines+markers',line=dict(color='#f5a623',width=2),marker=dict(size=7,symbol='triangle-up')), secondary_y=True)
     fig_cmp.update_layout(
         barmode='group', height=240,
-        plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='#1a1e2a',
         font=dict(color='#7a829a', size=10), margin=dict(l=0,r=0,t=0,b=0),
         legend=dict(font=dict(size=9)),
         xaxis=dict(gridcolor='rgba(255,255,255,0)'),
@@ -182,7 +195,7 @@ with col_p:
         textfont=dict(size=11, color='#f0f2f8'),
     ))
     fig_pie.update_layout(
-        height=240, plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)',
+        height=240, plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='#1a1e2a',
         font=dict(color='#7a829a', size=11), margin=dict(l=0,r=0,t=0,b=0),
         legend=dict(font=dict(size=10)),
         showlegend=True,
@@ -199,7 +212,7 @@ with col_d:
     fig_dist.add_trace(go.Bar(name='Dist. Lucro 70%', y=socios, x=dist_lc, orientation='h', marker_color='rgba(79,142,247,0.25)'))
     fig_dist.update_layout(
         barmode='stack', height=240,
-        plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='#1a1e2a',
         font=dict(color='#7a829a', size=11), margin=dict(l=0,r=0,t=0,b=0),
         legend=dict(font=dict(size=10)),
         xaxis=dict(gridcolor='rgba(255,255,255,0.04)', tickformat=',.0f', tickprefix='R$'),
