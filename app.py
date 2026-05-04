@@ -142,40 +142,25 @@ with col_h2:
     </div>""", unsafe_allow_html=True)
 
 # ── FILTROS ────────────────────────────────────────────────────────────────────
-st.markdown("<div class='section-title'>🎛️ Filtros</div>", unsafe_allow_html=True)
+st.markdown("<div class='section-title'>Filtros <span style='font-weight:300;text-transform:none;letter-spacing:0;color:#3a4258;font-size:10px'>— vazio = todos</span></div>", unsafe_allow_html=True)
 
-with st.container():
-    st.markdown("<div class='filter-card'>", unsafe_allow_html=True)
-    fc1, fc2, fc3 = st.columns([2, 3, 1])
+fc1, fc2, _gap = st.columns([2, 4, 4])
+with fc1:
+    anos_sel = st.multiselect(
+        "Ano", options=anos_disponiveis,
+        default=[],
+        format_func=lambda x: str(x),
+        placeholder="Todos os anos"
+    )
+with fc2:
+    meses_sel = st.multiselect(
+        "Mês", options=meses_disponiveis,
+        default=[],
+        format_func=lambda x: MESES_LABEL[x],
+        placeholder="Todos os meses"
+    )
 
-    with fc1:
-        st.markdown("<div class='filter-label'>Ano</div>", unsafe_allow_html=True)
-        anos_sel = st.multiselect(
-            label="ano", options=anos_disponiveis,
-            default=anos_disponiveis,
-            format_func=lambda x: str(x),
-            label_visibility="collapsed"
-        )
-
-    with fc2:
-        st.markdown("<div class='filter-label'>Mês</div>", unsafe_allow_html=True)
-        meses_sel = st.multiselect(
-            label="mes", options=meses_disponiveis,
-            default=meses_disponiveis,
-            format_func=lambda x: MESES_LABEL[x],
-            label_visibility="collapsed"
-        )
-
-    with fc3:
-        st.markdown("<div class='filter-label'>Limpar</div>", unsafe_allow_html=True)
-        if st.button("↺ Resetar"):
-            anos_sel  = anos_disponiveis
-            meses_sel = meses_disponiveis
-            st.rerun()
-
-    st.markdown("</div>", unsafe_allow_html=True)
-
-# Aplicar filtro
+# vazio = todos
 if not anos_sel:  anos_sel  = anos_disponiveis
 if not meses_sel: meses_sel = meses_disponiveis
 
